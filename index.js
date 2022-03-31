@@ -4,7 +4,7 @@
 let input = require('fs').readFileSync('example.txt').toString().split('\n');
 
 //배열입력 ->let numbers=input[0].split(' ').map(x=>parseInt(x));
-
+let numbers=input[0].split(' ').map(x=>parseInt(x));
 
 
 

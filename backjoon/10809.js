@@ -9,3 +9,4 @@ for(let i=97;i<123;i++){
     array.push(str.indexOf(String.fromCharCode(i)));
 }
 
+console.log(array.join(" "));

@@ -15,7 +15,6 @@ for(let i=0;i<array.length-2;i++){
         }
     }
 }
-
-answer.sort();
-answer.sort((a,b)=>a-b);
+//answer.sort(); 이렇게하면 배열 요소가 숫자크기순서가 아닌 유니코드 순으로 저장
+answer.sort((a,b)=>a-b); //요렇게 하면 해결
 console.log(answer[answer.length-1]);

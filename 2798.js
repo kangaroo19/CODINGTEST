@@ -17,4 +17,5 @@ for(let i=0;i<array.length-2;i++){
 }
 
 answer.sort();
+answer.sort((a,b)=>a-b);
 console.log(answer[answer.length-1]);

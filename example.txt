@@ -1,6 +1,5 @@
-5
-ab
-aa
-aca
-ba
-bb
+4
+aba
+abab
+abcabc
+a

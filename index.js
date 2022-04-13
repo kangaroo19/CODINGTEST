@@ -8,26 +8,14 @@
 
 let fs = require('fs');
 let input = fs.readFileSync("example.txt").toString().split("\n");
-input[0] = input[0].split(" ");
+
+const str=input.join("");
+
+console.log(str);
 
 
-///////
-for(let k=1;k<inputNumber;k++){
 
-    for(let i=0;i<input[k].length;i++){
-         if(input[k][i]==input[k][i+1]){
-             n=i+1;
-     }
-}
-    for(let i=n+1;i<input[k].length;i++){
-        if(input[k][i]==input[k][n]){
-            count++;
-            break;
-        }
-    }
-}
 
-console.log(inputNumber-count);
 
 
 

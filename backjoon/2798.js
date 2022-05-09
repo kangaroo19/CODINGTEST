@@ -1,7 +1,7 @@
 const input = require('fs').readFileSync('example.txt').toString().trim().split(/\s+/);
 
 const n=parseInt(input[0]); 
-const m=parseInt(input[1]); 
+const m=parseInt(input[1]);
 const array=input.splice(2,input.length-1); 
 let answer=[];
 for(let i=0;i<array.length-2;i++){

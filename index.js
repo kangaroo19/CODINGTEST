@@ -9,12 +9,16 @@
 let fs = require('fs');
 let input = fs.readFileSync("example.txt").toString().split("\n");
 
-const str=input.join("");
 
-console.log(str);
+function rec(n){
+    if(n==0){
+        return console.log(n,"hello")
+    }
+    console.log(n,"hello");
+    return rec(n-1)
+}
 
-
-
+console.log(rec(3))
 
 
 

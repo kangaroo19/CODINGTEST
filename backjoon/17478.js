@@ -1,5 +1,5 @@
 const input = require('fs').readFileSync('example.txt').toString().trim().split(' ');
-let n=Number(input[0])
+let n=Number(input[0]);
 
 
 

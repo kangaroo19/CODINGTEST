@@ -10,19 +10,26 @@ let fs = require('fs');
 let input = fs.readFileSync("example.txt").toString().split("\n");
 
 
-function rec(n){
-    if(n==0){
-        return console.log(n,"hello")
+function f(target,dataArray){
+    let low=0;
+    let high=dataArray.length-1;
+    let mid=Math.floor((high+low)/2)
+    while(low<=high){
+        let mid=Math.floor((high+low)/2)
+        let guess=dataArray[mid]//중간값
+        if(guess==target){
+            return 1;
+        }else if(guess>target){
+            high=mid-1
+        }
+        else{
+            low=mid+1
+        }
     }
-    console.log(n,"hello");
-    return rec(n-1)
+    return 0
 }
 
-console.log(rec(3))
-
-
-
-
-
+const target=[6,3,2,10,-10]
+const dataArray=[-10,-5,2,3,4,5,9,10]
 
 

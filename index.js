@@ -29,7 +29,12 @@ function f(target,dataArray){
     return 0
 }
 
-const target=[6,3,2,10,-10]
-const dataArray=[-10,-5,2,3,4,5,9,10]
+const array1=[6,3,2,10,-10]
+array1.sort((a,b)=>a-b)
+const array2=[10,9,-5,2,3,4,5,-10]
+const answer=[]
+for(let i of array2){
+    answer.push(f(i,array1))
+}
 
-
+console.log(answer)

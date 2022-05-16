@@ -12,4 +12,11 @@ const N = parseInt(input.shift())
 const arr = input.shift().split(' ').map(v=>+v);
 const M = parseInt(input.shift()) 
 const arrM = input.shift().split(' ').map(v=>+v);
-console.log(arr,arrM)
+
+const array=[1,1,1,1,1]
+const midValue=array[2]
+let i=2
+if(midValue==array[i-1]&&midValue==array[i+1]){
+    console.log("asdf")
+}
+

@@ -5,14 +5,14 @@ const array = input.shift().split(' ').map(v=>+v);
 const m = parseInt(input.shift()) 
 const target = input.shift().split(' ').map(v=>+v);
 
-array.sort((a,b)=>a-b)
-const array2=[[array[0],1]]
+array.sort((a,b)=>a-b) //이분탐색위한 정렬
+const array2=[[array[0],1]]//같은 수 찾기위한 새로운 배열 생성
 //console.log(array2)
 for(let i=1;i<n;i++){
-    if(array[i]===array[i-1]){
+    if(array[i]===array[i-1]){//i와 i-1의 값이 서로 같으면 array2[][1]의 값 1증가
         array2[array2.length-1][1]++
     }
-    else
+    else//아니면 그대로
         array2.push([array[i],1])
 }
 //console.log(array2)

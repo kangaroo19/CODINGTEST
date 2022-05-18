@@ -1,35 +1,28 @@
-//O(1)
-function O_1_algorithm(arr,index){
-    return arr[index]
+
+const mergeSort=function(array){
+    if(array.length==1) return array
+    let mid=Math.floor(array.length/2);
+    let left=array.slice(0,mid);
+    let right=array.slice(mid,array.length)
+    return merge(mergeSort(left),mergeSort(right))
 }
 
-let arr=[1,2,3,4,5];
-let index=1;
-let result=O_1_algorithm(arr,index);
-console.log(result);
-
-//O(n)
-function O_n_algorithm(n){
-    for(let i=0;i<n;i++){
-
+function merge(left,right){
+    let result=[]
+    while(left.length&&right.length){
+        if(left[0]<=right[0]){
+            result.push(left.shift());
+        }
+        else{
+            result.push(right.shift())
+        }
     }
+    while(left.length) result.push(left.shift())
+    while(right.length) result.push(right.shift())
+    return result
 }
+const arr=[5,2,4,7,6,1,3,8]
 
-//O(n^2)
-function O_quadratic_algorithm(n){
-    for(let i=0;i<n;i++){
-        for(let j=0;j<n;j++){}
-    }
-}
+console.log(mergeSort(arr))
 
-//O(2^n)
-function fibonacci(n){
-    if(n<=1){
-        return 1
-    }
-    return fibonacci(n-1)+fibonacci(n-2)
-}
-
-const a=fibonacci(40)
-console.log(a)
 

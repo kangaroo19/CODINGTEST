@@ -1,28 +1,12 @@
-
-const mergeSort=function(array){
-    if(array.length==1) return array
-    let mid=Math.floor(array.length/2);
-    let left=array.slice(0,mid);
-    let right=array.slice(mid,array.length)
-    return merge(mergeSort(left),mergeSort(right))
+const numbers=[10,3,8,4,1]
+function compare(a,b){
+    return a-b
 }
 
-function merge(left,right){
-    let result=[]
-    while(left.length&&right.length){
-        if(left[0]<=right[0]){
-            result.push(left.shift());
-        }
-        else{
-            result.push(right.shift())
-        }
-    }
-    while(left.length) result.push(left.shift())
-    while(right.length) result.push(right.shift())
-    return result
-}
-const arr=[5,2,4,7,6,1,3,8]
+numbers.sort(compare)
 
-console.log(mergeSort(arr))
+console.log(numbers)
 
-
+//반환값<0 : a가 b보다 앞에 위치
+//반환값==0 : a와 b순서 바꾸지 않음
+//반환값>0 : b가 a보다 앞에 위치

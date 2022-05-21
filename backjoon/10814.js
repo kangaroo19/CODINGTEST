@@ -10,10 +10,9 @@ const n=Number(array.shift())
 //   ]
 
 array.sort((a,b)=>{
-    if(a[0]!==b[0]){
-        return Number(a[0])-Number(b[0])
+    if(a[0]!==b[0]){//나이가 다르면 오름차순 정렬
+        return Number(a[0])-Number(b[0]) //음수 값 반환시(b[0]가 더 클때) 자리 바꿈
     }
-    
 })
 let answer=""
 for(let i=0;i<n;i++){

@@ -6,7 +6,15 @@ function compare(a,b){
 numbers.sort(compare)
 
 console.log(numbers)
-
+let hap=0
+const array=[
+    3, -2, -4, -9,  0,
+    3,  7, 13,  8, -3
+  ]
+  array.forEach((i)=>{
+      hap+=i
+  })
+  console.log(hap)
 //반환값<0 : a가 b보다 앞에 위치
 //반환값==0 : a와 b순서 바꾸지 않음
 //반환값>0 : b가 a보다 앞에 위치

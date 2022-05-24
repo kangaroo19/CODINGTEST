@@ -12,7 +12,7 @@ let count=0
 while(start!==end){
     let value=array[start]+array[end]
     if(value<hap) start++ //시작점과 끝점을 더한값이 hap보다 작으면 start 1증가
-    else if(value>hap) end--//시작점과 끝점을 더한값이 hpa보다 크거나 같으면(같을때는 count++)end 1감소
+    else if(value>hap) end--//시작점과 끝점을 더한값이 hap보다 크거나 같으면(같을때는 count++ 추가)end 1감소
     else{
         end--
         count++

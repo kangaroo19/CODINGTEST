@@ -1,20 +1,28 @@
-const numbers=[10,3,8,4,1]
-function compare(a,b){
-    return a-b
+let set1=new Set([1,2,3,3,3,3])
+let set2=new Set('123')
+let set3=new Set()
+set1.add(3)
+set1.add(4)
+//set1.delete(1)
+
+
+function interSect(seta,setb){
+    let interSection=new Set()
+    setb.forEach(e=>{
+        if(seta.has(e)) interSection.add(e)
+    })
+    return interSection
 }
 
-numbers.sort(compare)
+function unionSet(seta,setb){
+    let union=new Set(seta)
+    setb.forEach(e=>{
+        union.add(e)
+    })
+    return union
+}
 
-console.log(numbers)
-let hap=0
-const array=[
-    3, -2, -4, -9,  0,
-    3,  7, 13,  8, -3
-  ]
-  array.forEach((i)=>{
-      hap+=i
-  })
-  console.log(hap)
-//반환값<0 : a가 b보다 앞에 위치
-//반환값==0 : a와 b순서 바꾸지 않음
-//반환값>0 : b가 a보다 앞에 위치
+let seta=new Set([1,2,3])
+let setb=new Set([2,3,4,5])
+//console.log(interSect(seta,setb))
+console.log(typeof unionSet(seta,setb))

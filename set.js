@@ -28,6 +28,7 @@ function interSectSets(setA,setB){
 }
 let set5=new Set([1,2,3])
 let set6=new Set([2,3,4,5])
+
 console.log(interSectSets(set5,set6)) //Set(2) { 2, 3 }
 //-----------------------------------------------------
 

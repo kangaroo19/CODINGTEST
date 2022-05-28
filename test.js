@@ -1,28 +1,12 @@
-let set1=new Set([1,2,3,3,3,3])
-let set2=new Set('123')
-let set3=new Set()
-set1.add(3)
-set1.add(4)
-//set1.delete(1)
-
-
-function interSect(seta,setb){
-    let interSection=new Set()
-    setb.forEach(e=>{
-        if(seta.has(e)) interSection.add(e)
-    })
-    return interSection
-}
-
-function unionSet(seta,setb){
-    let union=new Set(seta)
-    setb.forEach(e=>{
-        union.add(e)
-    })
-    return union
-}
-
-let seta=new Set([1,2,3])
-let setb=new Set([2,3,4,5])
-//console.log(interSect(seta,setb))
-console.log(typeof unionSet(seta,setb))
+const input = require("fs").readFileSync("example.txt").toString().trim().split(/\s/);
+const n = +input[0];
+const m = +input[1];
+const arr = input.slice(2, n+2);
+const pokemonMap = new Map(arr.map((v, i) => [v, i+1]));
+const question = input.slice(n+2);
+const answer = [];
+question.forEach(v => {
+    if (Number.isNaN(+v)) answer.push(pokemonMap.get(v));
+    else answer.push(arr[+v-1]);
+});
+console.log(answer.join("\n"));

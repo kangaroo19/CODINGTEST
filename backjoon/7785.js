@@ -7,6 +7,7 @@ nums.shift()
 for(let i=0;i<n;i++){
     nums[i][1]=nums[i][1].substring(0,5) //\r때문에 substring사용
 }
+//nums는 2차원 배열
 let map=new Map(nums) //nums배열을 map으로 생성
 //value가 같으면 맨 마지막것만 남음
 //'baha'란 사람이 들어갔다가(enter) 나오면(leave)

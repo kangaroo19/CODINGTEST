@@ -35,14 +35,14 @@ class Heap{
 }
 
 class minHeap extends Heap{
-    bubbleUp(){
+    bubbleUp(){//add시 사용됨
         let index=this.items.length-1
         while(this.parent(index)!==undefined && this.parent(index)>this.items[index]){
             this.swap(index,this.parentIndex(index))
             index=this.parentIndex(index)
         }
     }
-    bubbleDown(){
+    bubbleDown(){//pull시 사용됨
         let index=0
         while(this.leftChild(index)!==undefined && 
         (this.leftChild(index)<this.items[index] || this.rightChild(index)<this.items[index])){
@@ -73,9 +73,9 @@ class minHeap extends Heap{
 
 const minheap=new minHeap()
 minheap.add(1)
-minheap.add(10)
-minheap.add(5)
-minheap.add(100)
+minheap.add(1)
+minheap.add(2)
+minheap.add(1)
 minheap.add(8)
 
 

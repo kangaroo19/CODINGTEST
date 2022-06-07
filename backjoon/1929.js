@@ -23,3 +23,5 @@ for(let i=n;i<=m;i++){
 }
 
 console.log(answer)
+
+//소수관련 문제는 제곱근이나 에라토스테네스의 체 사용

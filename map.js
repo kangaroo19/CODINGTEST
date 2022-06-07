@@ -1,81 +1,65 @@
-let max=new Map()
-max.set("id",0)
-max.set("name","michael")
-max.set("major","computer")
-max.set("age",24)
+const { maxHeaderSize } = require("http")
 
-console.log(max.get("michael"))
+let jaehyun=new Map()
 
-//console.log(max.get("name")) //michael
-//console.log(max.delete("age")) //true
-//console.log(max.has("id"))  //true
-//console.log(max.size) //4
-//max.clear() 모두 삭제
+//set으로 맵 객체에 삽입
+jaehyun.set("id",201807565)
+jaehyun.set("name","jaehyun")
+jaehyun.set("major","computer")
+jaehyun.set("age",24)
 
-console.log(max)
-//
-// Map(4) {
-//     'id' => 0,
-//     'name' => 'michael',
-//     'major' => 'computer',
-//     'age' => 24
-//   }
-let max2=new Map([ //이차원 배열로 넘겨주는 것도 가능
+
+//안의 인자는 키값
+jaehyun.get("id") //201807565
+jaehyun.delete("age") //삭제 성공 시 true반환
+jaehyun.clear() //맵 안의 프로퍼티 전부 삭제
+
+//2차원 배열로 넘겨주는것도 가능
+let michael=new Map([
     ["id",0],
     ["name","michael"],
-    ["major","computer"],
-    ["age",24]
+    ["major","english"],
+    ["age",23]
 ])
+
+//맵 객체는 문자열 아닌 값도 키로 사용가능하다
+const errorMessageObj={
+    404:"no page",
+    500:"server error"
+}
 
 const errorMessageMap=new Map([
-    [404,"no pages"],
-    [500,"sever error"],
-    [401,"no authorization"]  
+    [404,"no page"],
+    [500,"server error"]
 ])
 
-//console.log(errorMessageMap.get(404)) //no pages
+//console.log(errorMessageObj.404) 오류
+//console.log(errorMessageObj["404"]) no pages
+//console.log(errorMessageMap.get(404)) no pages
 
-//-----------------------------------------
-//순회
+//객체는 문자열을 통해서만 조회가능하고 .뒤에 숫자 입력시
+//에러가 난다
+//맵 객체에서는 get메소드의 인자로 숫자를 넘겨줘도 괜찮음
+
+
 const maxInfoMap = new Map([
     ["name", "김맥스"],
     ["age", 25],
     ["major", "영문학"],
 ])
 
-maxInfoMap.forEach((key)=>{
-    console.log(key+" ")
-})
-// 김맥스 
-// 25 
-// 영문학 
+//console.log(maxInfoMap.entries())
+//[Map Entries] { [ 'name', '김맥스' ], [ 'age', 25 ], [ 'major', '영문학' ] }
 
-maxInfoMap.forEach((key,value)=>{
-    console.log(key+" "+value)
-})
-// 김맥스 name
-// 25 age
-// 영문학 major
-
-// let mapIterator=maxInfoMap.entries()
-
-// console.log(mapIterator.next())
-// console.log(mapIterator.next())
-// console.log(mapIterator.next())
-// console.log(mapIterator.next())
-
-
-// { value: [ 'name', '김맥스' ], done: false }
-// { value: [ 'age', 25 ], done: false }
-// { value: [ 'major', '영문학' ], done: false }
-// { value: undefined, done: true }
-
-const map=new Map()
-map.set('name','Mommo')
-map.set('age',"secret")
-
-const mapIterator2=map.entries()
-while(!mapIterator2.next().done){
-    const [key,value]=mapIterator2.next().value
-    console.log(key+"  "+value)
+for(const [key,value] of maxInfoMap){
+    //console.log(key,value)
 }
+//name 김맥스
+// age 25
+// major 영문학
+
+//객체는 for...in문 으로 순회
+//맵은 for...of문으로 순회
+
+console.log(maxInfoMap.keys())
+console.log(maxInfoMap.values())

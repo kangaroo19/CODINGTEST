@@ -8,7 +8,7 @@ jaehyun.set("name","jaehyun")
 jaehyun.set("major","computer")
 jaehyun.set("age",24)
 
-
+console.log(jaehyun)
 //안의 인자는 키값
 jaehyun.get("id") //201807565
 jaehyun.delete("age") //삭제 성공 시 true반환

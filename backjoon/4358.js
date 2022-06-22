@@ -31,4 +31,3 @@ map.forEach((value,key)=>{
 })
 
 console.log(answer)
-

@@ -9,18 +9,18 @@ const input=fs.readFileSync("example.txt").toString().trim().split('\n');
 input.sort()
 const map=new Map()
 let sum=0
-for(let i=0;i<input.length;i++){
+for(let i=0;i<input.length;i++){ //나온갯수별 맵
     if(!map.has(input[i])) map.set(input[i],1)
     else map.set(input[i],map.get(input[i])+1)
 }
 
 map.forEach((i,j)=>{
-    sum+=i
+    sum+=i //sum은 전체값
 })
 //일부값/전체*100
 
 let answer=""
-map.forEach((value,key)=>{
+map.forEach((value,key)=>{ //value값 백분율 값으로 세팅
     let num=value/sum*100
     map.set(key,num.toFixed(4))
 })

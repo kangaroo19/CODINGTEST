@@ -10,7 +10,7 @@ let fiboArr=[0]
 let count=0
 function fiboWithMemoization(n){
     if(n<3) fiboArr[n]=1
-    if(!fiboArr[n]){
+    if(!fiboArr[n]){//내가 저장한 값 중 없다면
         count++
         fiboArr[n]=fiboWithMemoization(n-1)+fiboWithMemoization(n-2)
     }

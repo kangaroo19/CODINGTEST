@@ -9,4 +9,5 @@ let fibo_dp=(n)=>{
     return fiboArr[n]
 }
 
+console.log(fibo_dp(5))
 //dp의 핵심은 미리 계산해두었다가 필요할때 불러 쓰기 

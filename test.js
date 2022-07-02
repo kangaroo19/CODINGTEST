@@ -1,32 +1,36 @@
+//const { FORMERR } = require('dns');
 const fs=require('fs');
 const input=fs.readFileSync("example.txt").toString().trim().split('\n');
 const nums = input.map(v => v.split(' ').map(v=>+v));
 const n=nums[0].shift()
-const c=nums[0].shift()
+const s=nums[0].shift()
 
-let array=[]
-
+const array=[]
 for(let i=0;i<n;i++) array.push(nums[1][i])
 
-
-let map=new Map()
-for(let i=0;i<n;i++){
-    if(!map.has(array[i])) map.set(array[i],1)//맵에 없는 요소라면 value 값 1
-    else map.set(array[i],map.get(array[i])+1)//맵에 있으면 원래 value 값에 +1
+let start=0
+let end=0
+let answer=[]
+let value
+let count
+while(start<n && end<n){
+    value=0
+    if(count<=end){
+        count=start
+        value+=array[count]
+        count++
+    }
+    if(value>=s){
+        answer.push(end-start+1)
+        start++
+    } 
+   else{
+        end++
+    }  
+    
 }
-let mapToArray=[] //정렬위해 맵을 2차원배열로 만들기 위함
-map.forEach((value,key)=>{
-    mapToArray.push([key,value]) //[][0]에는 key값,[][1]에는 value값
-})
-mapToArray.sort((a,b)=>{
-    return b[1]-a[1]
-})//value 값에 따라 정렬
-
-
-let answer=""
-
-for(let i=0;i<mapToArray.length;i++){
-    answer+=Array(mapToArray[i][1]).fill(mapToArray[i][0]).join(" ")+" "
-}
-
 console.log(answer)
+answer.sort((a,b)=>a-b)
+
+if(answer[0]===0) console.log(0)
+else console.log(answer[0])

@@ -1,34 +1,37 @@
 const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split('\n');
-const nums = input.map(v => v.split(' ').map(v=>+v));
-const t=nums[0].shift()
+const input1=fs.readFileSync("example.txt").toString().trim().split('\n');
+const nums = input1.map(v => v.split(' '));
+const n=nums[0].shift()
+const m=nums[0].shift()
+nums.shift()
 
-for(let i=0;i<t;i++){
-    let k=nums[i*2+1][1]
-    let array=nums[i*2+2]
-    array.sort((a,b)=>a-b)
-    let start=0
-    let end=array.length-1
-    let answer=[]
-    let min=9999
-    let count=0
-    while(start<end){
-        let sum=array[start]+array[end]
-        if(sum>k) end--
-        else if(sum<k) start++
-        else start++
-
-        if(min>Math.abs(sum-k)){
-            min=Math.abs(sum-k)
-        }
-        else if(Math.abs(sum-k)===min) count++
-        
-    }
-    console.log(count+1)
+const input=[]
+for(let i=0;i<n;i++){
+    if(i===n-1) input.push(nums[i][0])
+    else input.push(nums[i][0].substring(0,nums[i][0].length-1))
+    if(input[i].length<m) input[i]=0
 }
 
-    
-    
+let map=new Map()
+for(let i=0;i<n;i++){
+    if(!map.has(input[i])) map.set(input[i],1)
+    else map.set(input[i],map.get(input[i])+1)
+    map.delete(0)
+}
+let array=[]
+map.forEach((value,key)=>{
+    array.push([key,value])
+})
 
+array.sort((a,b)=>{
+    if(b[0].length===a[0].length) return 
+    else if(a[1]===b[1]) return b[0].length-a[0].length
+    else return b[1]-a[1]
+})
+let answer=[]
+for(let i=0;i<array.length;i++){
+    answer.push(array[i][0])
+}
 
+console.log(answer.join('\n'))
 

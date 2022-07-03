@@ -1,36 +1,34 @@
-//const { FORMERR } = require('dns');
 const fs=require('fs');
 const input=fs.readFileSync("example.txt").toString().trim().split('\n');
 const nums = input.map(v => v.split(' ').map(v=>+v));
-const n=nums[0].shift()
-const s=nums[0].shift()
+const t=nums[0].shift()
 
-const array=[]
-for(let i=0;i<n;i++) array.push(nums[1][i])
+for(let i=0;i<t;i++){
+    let k=nums[i*2+1][1]
+    let array=nums[i*2+2]
+    array.sort((a,b)=>a-b)
+    let start=0
+    let end=array.length-1
+    let answer=[]
+    let min=9999
+    let count=0
+    while(start<end){
+        let sum=array[start]+array[end]
+        if(sum>k) end--
+        else if(sum<k) start++
+        else start++
 
-let start=0
-let end=0
-let answer=[]
-let value
-let count
-while(start<n && end<n){
-    value=0
-    if(count<=end){
-        count=start
-        value+=array[count]
-        count++
+        if(min>Math.abs(sum-k)){
+            min=Math.abs(sum-k)
+        }
+        else if(Math.abs(sum-k)===min) count++
+        
     }
-    if(value>=s){
-        answer.push(end-start+1)
-        start++
-    } 
-   else{
-        end++
-    }  
-    
+    console.log(count+1)
 }
-console.log(answer)
-answer.sort((a,b)=>a-b)
 
-if(answer[0]===0) console.log(0)
-else console.log(answer[0])
+    
+    
+
+
+

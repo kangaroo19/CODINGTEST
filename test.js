@@ -1,23 +1,15 @@
 const fs=require('fs');
 const input=fs.readFileSync("example.txt").toString().trim().split('\n');
 const nums = input.map(v => v.split(' ').map(v=>+v));
-const n=nums[0].shift()
+const t=nums[0].shift()
 nums.shift()
 
-let array=[]
-for(let i=0;i<n;i++) array.push(nums[0][i])
-
-let map=new Map()
 let answer=[]
-for(let i=0;i<n;i++){
-    map.set(array[i],0)
-
+for(let i=0;i<t;i++){
+    let array=nums[i]
+    array.sort((a,b)=>a-b)
+    answer.push(array[7])
 }
 
-map.forEach((value,key)=>{
-    answer.push(key)
-})
-
-answer.sort((a,b)=>a-b)
-console.log(answer.join(" "))
+console.log(answer.join("\n"))
 

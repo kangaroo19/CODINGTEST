@@ -20,4 +20,3 @@ map.forEach((value,key)=>{
 
 answer.sort((a,b)=>a-b)
 console.log(answer.join(" "))
-

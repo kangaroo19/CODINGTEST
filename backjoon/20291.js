@@ -37,5 +37,3 @@ for(let i=0;i<answer.length;i++){
 }
 
 console.log(answer2)
-
-

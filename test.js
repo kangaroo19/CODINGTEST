@@ -1,41 +1,18 @@
 const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split('\n');
-const nums = input.map(v => v.split(' '));
-const n=Number(nums[0].shift())
-nums.shift()
+const input=fs.readFileSync("example.txt").toString().trim().split(' ').map(v=>BigInt(v));
 
-const array=[]
-for(let i=0;i<n;i++){
-    if(i===7) array.push(nums[i][0])
-    else array.push(nums[i][0].substring(0,nums[i][0].length-1))
-}
-let array2=[]
-for(let i=0;i<n;i++){
-    array2.push(array[i].split('.'))
-}
-let onlyExtension=[]
+let fiboArr=[0]//memoization위함
+let fibo_dp=(n)=>{
+    if(n<=3) fiboArr[n]=1n
 
-for(let i=0;i<array2.length;i++){
-    onlyExtension.push(array2[i][1])
+    if(!fiboArr[n]){//내가 저장한 값 중 없을때
+        //재귀 이용해 구하고 저장
+        fiboArr[n]=fibo_dp(n-1)+fibo_dp(n-3)
+    }
+    return fiboArr[n]
 }
 
-let map=new Map()
-let answer=[]
-for(let i=0;i<onlyExtension.length;i++){
-    if(!map.has(onlyExtension[i])) map.set(onlyExtension[i],1)
-    else map.set(onlyExtension[i],map.get(onlyExtension[i])+1)
-}
+console.log(fibo_dp(input).toString())
 
-map.forEach((value,key)=>{
-    answer.push([key,value])
-})
-
-answer.sort()
-let answer2=''
-for(let i=0;i<answer.length;i++){
-    answer2+=answer[i][0]+" "+answer[i][1]+"\n"
-}
-
-console.log(answer2)
 
 

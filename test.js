@@ -1,10 +1,11 @@
 const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split(' ');
-const n=Number(input)
-const dp=[0,1]
+const input=fs.readFileSync("example.txt").toString().trim().split('\n');
+const nums = input.map(v => v.split(' ').map(v=>+v));
+const n=nums[0].shift()
+nums.shift()
 
-for(let i=2;i<=n;i++){
-    if(i%Math.sqrt(i)==0) dp[i]=1
-    else dp[i]=dp[i-1]+1
-}
-console.log(dp[n])
+
+if(nums[1][1])
+console.log(nums[0][1]*nums[nums.length-1][1]+nums[2][1]*nums[3][1])
+
+console.log((nums[0][1]*nums[1][1]+nums[4][1]*nums[3][1])*n)

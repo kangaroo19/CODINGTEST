@@ -1,11 +1,6 @@
 const fs=require('fs');
 const input=fs.readFileSync("example.txt").toString().trim().split(' ').map(v=>+v);
-const [n,k]=input
-let array=[]
-for(let i=1;i<=n;i++){
-    array[i-1]=i
-}
-console.log(array)
+const n=input[0]
 
 class Queue{
     constructor(){
@@ -32,30 +27,11 @@ class Queue{
             this.storage[this.rear]=value
         }
     }
-    newleft(){
+    newAdd(){
         this.add(this.storage[this.front])
-        this.add(this.storage[this.front+1])
-        this.popleft1()
-        this.popleft1()
+        this.popleft()
     }
     popleft(){
-        let temp//첫 원소 값 임시로 담을 변수
-        if(this.front==this.rear){ //storage에 하나만 남았을 때
-            this.storage[this.front]
-            delete this.storage[this.front]
-            this.front=0
-            this.rear=0
-            //위의 0으로 초기화 하는 부분이 없다면 
-            //front는 rear보다 1 더 큰 역설에 빠지게 됨
-        }
-        else{
-            temp=this.storage[this.front]
-            delete this.storage[this.front]
-            this.front+=1
-        }
-        return console.log(temp)
-    }
-    popleft1(){
         let temp//첫 원소 값 임시로 담을 변수
         if(this.front==this.rear){ //storage에 하나만 남았을 때
             this.storage[this.front]
@@ -74,14 +50,12 @@ class Queue{
     }
 }
 let q=new Queue()
-for(let i=k;i<=n;i++){
-    q.add(array[i-1])
-}
-for(let i=0;i<k-1;i++){
-    q.add(array[i])
-}
-while(q.size()!==0){
-    q.popleft()
-    q.newleft()
+for(let i=1;i<=n;i++){
+    q.add(i)
 }
 
+while(q.size()!==1){
+    q.popleft()
+    q.newAdd()
+}
+console.log(Object.values(q.storage).join(""))

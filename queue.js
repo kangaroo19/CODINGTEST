@@ -33,8 +33,8 @@ class Queue{
     popleft(){
         let temp//첫 원소 값 임시로 담을 변수
         if(this.front==this.rear){ //storage에 하나만 남았을 때
-            temp.this.storage[this.front]
-            delete this.storage[this.front]
+            this.storage[this.front]
+            delete this.storage[this.front]//delete연산자는 객체의 해당값 지움
             this.front=0
             this.rear=0
             //위의 0으로 초기화 하는 부분이 없다면 

@@ -1,4 +1,5 @@
 const fs=require('fs');
+const { urlToHttpOptions } = require('url');
 const input=fs.readFileSync("example.txt").toString().trim().split('\n')
 const n=Number(input.shift())
 
@@ -16,7 +17,7 @@ class Queue{
             return this.rear-this.front+1
         }
     }
-    add(value){
+    add_back(value){
         if(this.size()===0){
             this.storage['0']=value
         }
@@ -25,10 +26,19 @@ class Queue{
             this.storage[this.rear]=value
         }
     }
-    popleft(){
+    add_front(value){
+       if(this.size()==0){
+            this.storage['0']=value
+       }
+       else{
+        this.front-=1
+        this.storage[this.front]=value
+       }
+    }
+    pop_front(){
         let temp
         if(this.front===this.rear){
-            this.storage[this.front]
+            temp=this.storage[this.front]
             delete this.storage[this.front]
             this.front=0
             this.rear=0
@@ -37,6 +47,21 @@ class Queue{
             temp=this.storage[this.front]
             delete this.storage[this.front]
             this.front+=1
+        }
+        return temp
+    }
+    pop_back(){
+        let temp
+        if(this.front===this.rear){
+            temp=this.storage[this.rear]
+            delete this.storage[this.rear]
+            this.front=0
+            this.rear=0
+        }
+        else{
+            temp=this.storage[this.rear]
+            delete this.storage[this.rear]
+            this.rear-=1
         }
         return temp
     }
@@ -53,16 +78,28 @@ class Queue{
 let q=new Queue()
 let answer=""
 for(let i=0;i<n;i++){
-    if(input[i][0]==='p' && input[i].length>=6){
-        q.add(Number(input[i].substring(5)))
+    if(input[i][1]==='u' && input[i][5]==='f'){
+        q.add_front(Number(input[i].substring(11)))
     }
-    else if(input[i][0]==='p' && input[i].length<=4){
+    else if(input[i][1]==='u' && input[i][5]==='b'){
+        q.add_back(Number(input[i].substring(10)))
+    }
+    else if(input[i][4]==='f' && input[i].length<=10){
         if(q.size()===0){
             answer+=-1+"\n"
         }
         else{
             answer+=q.first()+"\n"
-            q.popleft()
+            q.pop_front()
+        }
+    }
+    else if(input[i][4]==='b' && input[i].length<=10){
+        if(q.size()===0){
+            answer+=-1+"\n"
+        }
+        else{
+            answer+=q.last()+"\n"
+            q.pop_back()
         }
     }
     else if(input[i][0]==='s'){
@@ -79,5 +116,5 @@ for(let i=0;i<n;i++){
         answer+=q.last()+'\n'
     }
 }
-
 console.log(answer)
+

@@ -74,9 +74,7 @@ class Queue{
         if(this.size()===0) return -1
         else return this.storage[this.rear]
     }
-    rotate(){
-
-    }
+  
 }
 
 for(let i=0;i<t;i++){
@@ -95,21 +93,18 @@ for(let i=0;i<t;i++){
             q.pop_front()
         }
     })
-    console.log(q.storage)
+    
 }
 
 
 
-
-
-
-// let q=new Queue()
-// q.add_front(1)
-// q.add_front(2)
-// q.add_front(3)
-// q.add_front(4)
-// q.pop_front()
-// console.log(q.storage)
+let q=new Queue()
+q.add_front(1)
+q.add_front(2)
+q.add_front(3)
+q.add_front(4)
+q.pop_front()
+console.log(q.size())
 
 
 // let p=new Queue()

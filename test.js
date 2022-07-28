@@ -1,7 +1,8 @@
 const fs=require('fs');
-const { urlToHttpOptions } = require('url');
 const input=fs.readFileSync("example.txt").toString().trim().split('\n')
-const n=Number(input.shift())
+const t=Number(input.shift())
+
+
 
 class Queue{
     constructor(){
@@ -73,48 +74,49 @@ class Queue{
         if(this.size()===0) return -1
         else return this.storage[this.rear]
     }
+    rotate(){
+
+    }
 }
 
-let q=new Queue()
-let answer=""
-for(let i=0;i<n;i++){
-    if(input[i][1]==='u' && input[i][5]==='f'){
-        q.add_front(Number(input[i].substring(11)))
-    }
-    else if(input[i][1]==='u' && input[i][5]==='b'){
-        q.add_back(Number(input[i].substring(10)))
-    }
-    else if(input[i][4]==='f' && input[i].length<=10){
-        if(q.size()===0){
-            answer+=-1+"\n"
+for(let i=0;i<t;i++){
+    let q=new Queue()
+    let words=Array.from(input[i*3])
+    let len=Number(input[i*3+1])
+    let arr=JSON.parse(input[i*3+2])
+    words.forEach((element,index)=>{
+        
+        if(element==='R'){
+            for(let j=0;j<len;j++){
+                q.add_front(arr[j])
+            }
         }
-        else{
-            answer+=q.first()+"\n"
+        else if(element==='D'){
             q.pop_front()
         }
-    }
-    else if(input[i][4]==='b' && input[i].length<=10){
-        if(q.size()===0){
-            answer+=-1+"\n"
-        }
-        else{
-            answer+=q.last()+"\n"
-            q.pop_back()
-        }
-    }
-    else if(input[i][0]==='s'){
-        answer+=q.size()+"\n"
-    }
-    else if(input[i][0]==='e'){
-        if(q.size()===0) answer+=1+'\n'
-        else answer+=0+'\n'
-    }
-    else if(input[i][0]==='f'){
-        answer+=q.first()+'\n'
-    }
-    else{
-        answer+=q.last()+'\n'
-    }
+    })
+    console.log(q.storage)
 }
-console.log(answer)
 
+
+
+
+
+
+// let q=new Queue()
+// q.add_front(1)
+// q.add_front(2)
+// q.add_front(3)
+// q.add_front(4)
+// q.pop_front()
+// console.log(q.storage)
+
+
+// let p=new Queue()
+// p.add_back(1)
+// p.add_back(2)
+// p.add_back(3)
+// p.add_back(4)
+// p.pop_front()
+
+// console.log(p.storage)

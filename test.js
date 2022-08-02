@@ -1,27 +1,38 @@
-const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split('\n').map(v=>+v)
-
-const [n,...nums]=input
-const numbers=nums.map(i=>Number(i))
-function solution(n,numbers){
-    const stack=[]
-    let answer=''
-    let count=1
-
-    for(let i=0;i<n;i++){
-        const number=numbers.shift()
-        while(count<=number){
-            stack.push(count++)
-            answer+='+'
-        }
-        const popedItem=stack.pop()
-        if(popedItem!==number){
-            return 'NO'
-        }
-        answer+='-'
+class Stack{
+    constructor(){
+        this.arr=[]
+        this.index=0
     }
-    return answer.split(' ').join('\n')
-
+    push(item){
+        this.arr[this.index++]=item
+    }
+    pop(){
+        if(this.index<=0) return null
+        const result=this.arr[--this.index]
+        return result
+    }
 }
-const answer=solution(n,numbers)
-console.log(answer)
+
+const fs=require('fs');
+const input=fs.readFileSync("example.txt").toString().trim().split('\n')
+
+const word=input.shift()
+const n=Number(input.shift())
+const array=input
+
+let cur=word.length-2
+//제출시 -1
+console.log(cur)
+array.forEach((element,index)=>{
+    switch(element[0]){
+        case 'L':
+            if(cur===-1) return
+            cur--
+            break;
+        case 'D':
+            if(cur===word.length) return
+            cur++
+    }
+})
+
+console.log(cur)

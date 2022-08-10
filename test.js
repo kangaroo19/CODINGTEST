@@ -1,18 +1,15 @@
 const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split(' ');
-let n=Number(input[0])
-let two=0
-let five=0
-while(1){
-    if(n%5==0){
-        five=n/5
-        console.log(five+two)
-        break
-    }
-    if(n<0){
-        console.log(-1)
-        break
-    }
-    n=n-2
-    two++
+const input=fs.readFileSync("example.txt").toString().trim().split(' ').map(v=>+v);
+let n=input[0]-2
+let k=input[1]
+
+const dp=[1]
+let j=n-1
+for(let i=1;i<k;i++){
+    dp[i]=dp[i-1]+j
+    j++
 }
+
+
+console.log(dp)
+

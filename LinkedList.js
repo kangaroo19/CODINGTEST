@@ -1,13 +1,19 @@
-const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split('\n');
-const nums = input.map(v => v.split(' '));
-const word=nums[0].toString()
-let cursor=word.length
-const n=Number(nums[1])
-console.log(n)
-console.log(nums)
 
 
+//연결 리스트의 핵심은 node이며,node는 data를 담는
+//data field와 다음 노드를 알려주는 linked field로 구성
+
+const { link } = require("fs")
+
+//링크드 리스트의 가장 큰 장점은 리스트의 길이가 가변적이라는 것
+//배열의 단점을 링크드리스트가 커버 할 수 있음
+//배열은 크기가 가변적이지 않음, 우선 크기를 정해준 다음 모자라면 메모리를 더 
+//할당하고 배열의 데이터를 복사해야됨--->오래걸리고 비효율적
+
+//단점은 어떤 노드를 찾거나 데이터를 변경할때 바로 찾아낼 수가 없음
+
+//데이터가 자주 추가되거나 가변적으로 자주 변하게 될 프로그램이면 -> 링크드리스트
+//데이터의 변경이나 탐색을 위한 것이라면 => 배열
 
 class Node{
     constructor(data,next=null){
@@ -69,7 +75,7 @@ class LinkedList{
         let count=0
         while(current){
             if(count==index){
-                return current.data
+                console.log(current.data)
             }
             count++
             current=current.next
@@ -96,44 +102,11 @@ class LinkedList{
         }
         this.size--
     }
-    toString(){
-        let array=[]
-        let current=this.head
-        while(current.next!==null){
-            array.push(current.data)
-            current=current.next
-        }
-        return array
-    }
 }
 
 const linkedlist=new LinkedList()
-
-for(let i=0;i<word.length-1;i++){
-    linkedlist.insertLast(word[i])
-}
-
-for(let i=2;i<n+2;i++){
-    if(nums[i][0]==='P'){
-        linkedlist.insertAt(nums[i][1].trim(),cursor-1)
-        cursor++
-    }
-    else if(nums[i][0].trim()==='L'){
-        cursor--
-        if(cursor<0) cursor=0
-    }
-    else if(nums[i][0].trim()==='B'){
-        linkedlist.removeAt(cursor)
-    }
-    else if(nums[i][0].trim()==='D'){
-        cursor++
-        if(cursor>linkedlist.size) cursor=linkedlist.size
-    }
-}
-let array=[]
-
-
-for(let i=0;i<linkedlist.size;i++){
-    array.push(linkedlist.getAt(i))
-}
-console.log(array)
+linkedlist.insertLast('a')
+linkedlist.insertLast('b')
+linkedlist.insertLast('c')
+linkedlist.insertAt('x',0)
+console.log(linkedlist)

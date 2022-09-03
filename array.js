@@ -1,5 +1,7 @@
 const names=['haley','alex','luke']
 const [first,second]=names
+
+
 //names라는 배열의 첫번째 두번째 요소를 각각 
 //first,second라는 변수에 담는다는 뜻
 

@@ -1,10 +1,20 @@
-const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split('\n');
-const nums = input.map(v => v.split(' ').map(x => +x));
-const n=nums[0][0]
-let array=nums[1]
-let stack=[]
+const fs = require("fs");
+const input = (process.platform === "linux"
+  ? fs.readFileSync("/dev/stdin").toString()
+  : `4
+9 5 4 8`
+)
+  .split("\n")[1]
+  .split(" ")
+  .map((a) => +a);
 
-for(let i=0;i<n;i++){
-    while(stack.length!==0 && array[i]>)
+let stack = [];
+let result = new Array(input.length).fill(-1);
+
+for (let i = 0; i < input.length; i++) {
+  while (stack.length && input[stack[stack.length - 1]] < input[i]) {
+    result[stack.pop()] = input[i];
+  }
+  stack.push(i);
 }
+console.log(result.join(" "));

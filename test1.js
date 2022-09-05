@@ -1,3 +1,2 @@
-let array=[]
-
-if(!array.length) console.log(123)
+let arr=new Array(100000000)
+console.log(arr)

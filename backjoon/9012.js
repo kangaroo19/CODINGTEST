@@ -6,8 +6,8 @@ const n=Number(nums[0][0])
 const answer=[]
 
 for(let i=n;i>=1;i--){
-    const lStack=[]
-    const rStack=[]
+    const lStack=[] // ')' 저장
+    const rStack=[] // '(' 저장
     let VPS=nums[i].pop().trim().split("")
     let len=VPS.length
     if(len%2===1){

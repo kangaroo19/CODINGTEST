@@ -1,32 +1,32 @@
 const fs=require('fs');
 const input=fs.readFileSync("example.txt").toString().trim().split('');
 const len=input.length
-const lStack=[]
-const rStack=[]
-let array=[]
-if(len%2===1){
-    console.log(0)
-}
-else{
-    for(let i=len-1;i>=0;i--){
-        if((input[i]===')' || input[i]===']')){
-            
-            rStack.push(input.pop())
-        }
-        else{
-            lStack.push(input.pop())
-            if(lStack[lStack.length-1]==='[' && rStack[rStack.length-1]===']'){
-                array.push(3)
-                lStack.pop()
-                rStack.pop()
-            }
-            else if(lStack[lStack.length-1]==='(' && rStack[rStack.length-1]===')'){
-                array.push(2)
-                lStack.pop()
-                rStack.pop()
-            }
+const stack=[]
+let answer=0
+for(let i=0;i<len;i++){
+    if(input[i]==='(' || input[i]==='['){
+        stack.push(input[i])
+        if(typeof stack[stack.length-2]==='number'){
+            answer+=stack[stack.length-2]
         }
     }
+    else if(input[i]===')'){
+        if(typeof stack[stack.length-1]==='number'){
+            let temp=stack[stack.length-1]*2
+            answer+=temp
+            stack.push(answer)
+        }
+        
+    }
+    else{
+        if(typeof stack[stack.length-1]==='number'){
+            let temp=stack[stack.length-1]*3
+            answer+=temp
+            stack.push(answer)
+        }
+        
+        
+    }
 }
-
-console.log(array)
+console.log(stack)
+console.log(answer)

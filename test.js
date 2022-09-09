@@ -1,32 +1,24 @@
 const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split('');
-const len=input.length
+const input=fs.readFileSync("example.txt").toString().trim().split('\n');
+const n=Number(input.shift())
+const word=input.shift().trim()
+const array=input
+word[0]='D'
+console.log(word)
 const stack=[]
-let answer=0
-for(let i=0;i<len;i++){
-    if(input[i]==='(' || input[i]==='['){
-        stack.push(input[i])
-        if(typeof stack[stack.length-2]==='number'){
-            answer+=stack[stack.length-2]
-        }
-    }
-    else if(input[i]===')'){
-        if(typeof stack[stack.length-1]==='number'){
-            let temp=stack[stack.length-1]*2
-            answer+=temp
-            stack.push(answer)
-        }
-        
-    }
-    else{
-        if(typeof stack[stack.length-1]==='number'){
-            let temp=stack[stack.length-1]*3
-            answer+=temp
-            stack.push(answer)
-        }
-        
-        
+for(let i=0;i<word.length;i++){
+    if('A'<=word[i] && word[i]<='Z'){
+        word.replace('A',array[word[i].charCodeAt()-65])
     }
 }
-console.log(stack)
-console.log(answer)
+console.log(word)
+for(let i=0;i<word.length;i++){
+    stack.push(word[i])
+    if(word[i]==='+' || word[i]==='-' || word[i]==='/' || word[i]==='*'){
+        let op=stack.pop()
+        let b=stack.pop()
+        let a=stack.pop()
+        let temp='('+a+op+b+')'
+        stack.push(temp)
+    }
+}

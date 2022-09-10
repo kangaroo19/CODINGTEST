@@ -1,2 +1,3 @@
-let arr=new Array(100000000)
-console.log(arr)
+const str='123'
+const a=str.split("")
+console.log(a)

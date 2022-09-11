@@ -1,6 +1,5 @@
 const fs=require('fs');
 const input=fs.readFileSync("example.txt").toString().trim().split('\n');
-
 for(let i=0;i<input.length-1;i++){
     const word=input[i].trim().split("")
     if(checkPossible(word)){
@@ -21,9 +20,8 @@ for(let i=0;i<input.length-1;i++){
         let j=0
         while(1){
             if(lstack[j]==='}' && rstack[j]==='{'){
-                let str2=checkMiddle(lstack,rstack,j)
+                let str2=checkMiddle(lstack,rstack,j+1)
                 if(checkPossible(str2)){
-                    console.log(123)
                     j++
                     continue
                 }
@@ -33,18 +31,24 @@ for(let i=0;i<input.length-1;i++){
                 str=lstack.join("")+[...rstack].reverse().join("")
             }
             else if(lstack[j]==='}' && rstack[j]==='}'){
-               
+                let str2=checkMiddle(lstack,rstack,j+1)
+                if(checkPossible(str2)===true){
+                    j++
+                    continue
+                }
                 count+=1
                 lstack[j]='{'
                 str=lstack.join("")+[...rstack].reverse().join("")
             }
             else if(lstack[j]==='{' && rstack[j]==='{'){
-               
+                let str2=checkMiddle(lstack,rstack,j+1)
+                if(checkPossible(str2)===true){
+                    j++
+                    continue
+                }
                 count+=1
                 rstack[j]='}'
                 str=lstack.join("")+[...rstack].reverse().join("")
-                
-                
             }
             j++
             if(checkPossible(str)) break;

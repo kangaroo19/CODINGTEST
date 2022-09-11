@@ -1,15 +1,25 @@
-const a=[1,2,3]
-const b=[6,5,4]
-const c=[]
-const d=[]
-a.filter((number,index,src)=>{
-    if(index<2)
-    c.push(number)
-})
-b.filter((number,index,src)=>{
-    if(index<2)
-    d.push(number)
+const fs = require('fs');
+const filePath = process.platform === 'linux' ? '/dev/stdin' : './example.txt';
+let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
-})
+for(let i in input){
+    let temp=input[i].trim().split("")
+    let stack=[]
+    let count=0
 
-console.log(c.join("")+d.reverse().join(""))
+    if(temp[0]==='-') break;
+
+    for(let j in temp){
+        if(temp[j]==='{') stack.push(temp[j])
+        else{
+            if(!stack.length){
+                stack.push('{')
+                count++
+            }
+            else{
+                stack.pop()
+            }
+        }
+    }
+    console.log((Number(i)+1)+'. '+(cnt+stack.length/2))
+}

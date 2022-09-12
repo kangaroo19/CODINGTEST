@@ -7,6 +7,9 @@ const [first,second]=names
 
 //console.log(first,second) //=> haley alex
 
+
+
+
 const flowers=['rose','tulip','sunflower','iris']
 
 const [a,...b]=flowers
@@ -14,3 +17,13 @@ const [a,...b]=flowers
 //console.log(b) //=>[ 'tulip', 'sunflower', 'iris' ]
 //console.log(a) //=>rose
 
+const array1=[1,2,3]
+console.log(array1.includes(2))
+
+//include -> 배열안에 인자값 있는지 확인 (true or false)
+
+const arr1=[1,2,3]
+const arr2=[4,5,6]
+
+const arr3=[...arr1,...arr2]
+console.log(arr3)

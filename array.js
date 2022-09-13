@@ -18,7 +18,7 @@ const [a,...b]=flowers
 //console.log(a) //=>rose
 
 const array1=[1,2,3]
-console.log(array1.includes(2))
+//console.log(array1.includes(2))
 
 //include -> 배열안에 인자값 있는지 확인 (true or false)
 
@@ -26,4 +26,14 @@ const arr1=[1,2,3]
 const arr2=[4,5,6]
 
 const arr3=[...arr1,...arr2]
-console.log(arr3)
+//console.log(arr3)
+
+const arr4=[ [ 1, 2 ],
+             [ 1, 3 ],
+             [ 1, 4 ],
+             [ 2, 4 ],
+             [ 3, 4 ]
+            ]
+arr4.forEach(([from,to])=>{
+    console.log(from,to)
+})

@@ -28,3 +28,5 @@ const bfs=(start)=>{
 }
 graph.forEach(v=>v.sort((a,b)=>a-b))
 console.log(bfs(1))
+
+//bfs방식으로 풀어야됨

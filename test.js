@@ -1,16 +1,15 @@
 const fs=require('fs');
 const input=fs.readFileSync("example.txt").toString().trim().split('\n');
-const nums = input.map(v => v.split(' ').map(v=>+v));
-const n=nums[0][0]
-const k=nums[1][0]
-nums.shift()
-nums.shift()
-const graph=[...Array(n+1)].map(() => [])
+const [n,m,r]=input.shift().split(' ').map(Number)
+const edges=input.map(v => v.split(' ').map(Number))
+const graph=[...Array(n+1)].map(()=>[])
 
-nums.forEach(([from,to])=>{
+edges.forEach(([from,to])=>{
     graph[from].push(to)
     graph[to].push(from)
+    graph[from].sort((a,b)=>a-b)
 })
+
 
 const bfs=(start)=>{
     const queue=[start]
@@ -24,7 +23,13 @@ const bfs=(start)=>{
             queue.push(...graph[node])
         }
     }
-    return order.length-1
+    const len=order.length
+    if(len!==n){
+        for(let i=0;i<n-len;i++){
+            order.push(0)
+        }
+    }
+    return order.join("\n")
 }
-graph.forEach(v=>v.sort((a,b)=>a-b))
-console.log(bfs(1))
+
+console.log(bfs(r))

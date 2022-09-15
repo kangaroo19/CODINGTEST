@@ -37,3 +37,12 @@ const arr4=[ [ 1, 2 ],
 arr4.forEach(([from,to])=>{
     console.log(from,to)
 })
+
+
+//split('')와 split(' ')의 차이점
+//전자는 하나하나 떼서 배열에 저장
+//후자는 ' '(빈칸)을 기준으로 나눠서 저장
+const arr5='123 456'
+
+console.log(arr5.split('')) //['1', '2', '3',' ', '4', '5','6']
+console.log(arr5.split(' ')) //['123','456']

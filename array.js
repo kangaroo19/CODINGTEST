@@ -28,15 +28,7 @@ const arr2=[4,5,6]
 const arr3=[...arr1,...arr2]
 //console.log(arr3)
 
-const arr4=[ [ 1, 2 ],
-             [ 1, 3 ],
-             [ 1, 4 ],
-             [ 2, 4 ],
-             [ 3, 4 ]
-            ]
-arr4.forEach(([from,to])=>{
-    console.log(from,to)
-})
+
 
 
 //split('')와 split(' ')의 차이점
@@ -46,3 +38,14 @@ const arr5='123 456'
 
 console.log(arr5.split('')) //['1', '2', '3',' ', '4', '5','6']
 console.log(arr5.split(' ')) //['123','456']
+
+const arr6=[11,22,33,44,55]
+for(let i in arr6){
+    console.log(i)
+}
+//0 1 2 3 4 => for..in은 인덱스 출력
+
+for(let i of arr6){
+    console.log(i)
+}
+//11 22 33 44 55 => for..of는 값 출력

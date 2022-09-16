@@ -48,6 +48,7 @@ const maxInfoMap = new Map([
     ["major", "영문학"],
 ])
 
+
 //console.log(maxInfoMap.entries())
 //[Map Entries] { [ 'name', '김맥스' ], [ 'age', 25 ], [ 'major', '영문학' ] }
 
@@ -57,9 +58,15 @@ for(const [key,value] of maxInfoMap){
 //name 김맥스
 // age 25
 // major 영문학
+for( let i of maxInfoMap){
+    //console.log(i)
+}
+// [ 'name', '김맥스' ]
+// [ 'age', 25 ]
+// [ 'major', '영문학' ]
 
 //객체는 for...in문 으로 순회
 //맵은 for...of문으로 순회
 
-console.log(maxInfoMap.keys())
-console.log(maxInfoMap.values())
+// console.log(maxInfoMap.keys())
+// console.log(maxInfoMap.values())

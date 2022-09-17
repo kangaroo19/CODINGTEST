@@ -1,9 +1,9 @@
-//자바스크립트에서는 queue 내장함수는 없지만 배열을 사용하여
-//큐의 기능 흉내낼수 있다 (shift()라는 메서드 있기때문)
-//그러나 shift()를 사용하면 원소를 앞에서 부터 하나씩
-//제거할때 나머지 원소에 대한 재정렬이 이루어 져야 하기 때문에
-//원래 큐 자료구조의 시간복잡도와 상당한 차이가 발생
-//큐 시간복잡도 O(1)
+const fs=require('fs');
+
+const input=fs.readFileSync("example.txt").toString().trim().split('\n');
+const [n,m,r]=input.shift().split(' ').map(Number)
+const edges=input.map(v => v.split(' ').map(Number))
+const graph=[...Array(n+1)].map(()=>[])
 
 class Queue{
     constructor(){
@@ -49,9 +49,31 @@ class Queue{
     }
 }
 
-let q=new Queue()
-const arr=[1,2,3]
-q.add(...arr)
+edges.forEach(([from, to]) => {
+    graph[from].push(to);
+    graph[to].push(from);
+  });
+const visited=Array(n+1).fill(false) //true or false 저장되는 배열
+const order=Array(n).fill(0) //순서 저장하는 배열
+let count=1
 
-console.log(q)
+const bfs=(start)=>{
+    const queue=new Queue()
+    queue.add(start)
+    while(queue.size()>0){ 
+        const node=queue.popleft()
+        if(!visited[node]){
+            visited[node]=true
+            order[node-1]=count++
+            queue.add(...graph[node])
+            for(let i=0;i<graph[node].length;i++){
+                queue.add(graph[node][i])
+            }
+        }
+    }
+    return order
+}
 
+graph.forEach(v=>v.sort((a,b)=>b-a))
+let answer=bfs(r)
+console.log(answer.join("\n"))

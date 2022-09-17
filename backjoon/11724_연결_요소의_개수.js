@@ -31,13 +31,12 @@ const arr=Array(n).fill(0)
 let count=0
 graph.forEach(v=>v.sort((a,b)=>b-a))
 
-
 for(let i=1;i<=n;i++){
-    if(arr[i-1]===0){
+    if(arr[i-1]===0){ //arr안의 해당 값이 0이면 dfs함수 실행하고 count 1증가
         dfs(i)
         count++
     }
-    else{
+    else{ //arr의 해당값이 0이 아니라는 것은 이미 탐색한 정점이라는 뜻이므로 continue
         continue
     }
 }

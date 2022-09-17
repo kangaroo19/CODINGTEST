@@ -77,3 +77,7 @@ const bfs=(start)=>{
 graph.forEach(v=>v.sort((a,b)=>a-b))
 let answer=bfs(r)
 console.log(answer.join("\n"))
+
+//큐를 클래스로 구현하지 않고 단순히 shift,push만 
+//사용했을때는 시간초과가 나왔음
+//해결위해 큐를 클래스로 직접 구현

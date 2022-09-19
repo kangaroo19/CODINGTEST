@@ -40,6 +40,7 @@ console.log(arr5.split('')) //['1', '2', '3',' ', '4', '5','6']
 console.log(arr5.split(' ')) //['123','456']
 
 const arr6=[11,22,33,44,55]
+
 for(let i in arr6){
     console.log(i)
 }

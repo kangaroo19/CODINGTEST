@@ -38,6 +38,7 @@ const solution=(maps)=>{
             }
             valueMap[nextX][nextY]=maps[nextX][nextY]+valueMap[x][y]
             queue.push([nextX,nextY])
+            
     
             
         }

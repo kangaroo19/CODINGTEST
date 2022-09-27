@@ -1,11 +1,6 @@
 let fs = require('fs');
-let input = fs.readFileSync('example.txt').toString().trim().split('');
+let input = fs.readFileSync('example.txt').toString().trim().split('').sort((a,b)=>b-a);
+const n=Number(input.join(""))
+console.log((n%30===0)?n:-1)
 
-const answer=[]
-for(let i=0;i<input.length;i++){
-    let arr=input.slice(i)
-    answer.push(arr)
-}
 
-answer.sort()
-console.log(answer.map(v=>v.join("")).join("\n"))

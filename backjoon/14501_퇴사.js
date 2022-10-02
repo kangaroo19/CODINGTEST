@@ -1,11 +1,17 @@
 const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split(' ').map(v=>BigInt(v));
-const n=input.shift()
+const input=fs.readFileSync("example.txt").toString().trim().split('\n');
+const nums = input.map(v => v.split(' ').map(v=>+v));
+const n=nums.shift().pop()
 
-const dp=[0n,1n]
-
-for(let i=2;i<=n;i++){
-    dp[i]=dp[i-1]+dp[i-2]
+const dp=new Array(n).fill(0)
+for(let i=0;i<n;i++){
+    const [duration,profit]=nums[i]
+    if(i+duration>n) continue
+    dp[i]+=profit
+    //console.log(dp)
+    for(let j=i+duration;j<n;j++){
+        //console.log(dp[j],dp[i])
+        dp[j]=Math.max(dp[j],dp[i])
+    }
 }
-
-console.log(dp[n].toString())
+console.log(Math.max(...dp))

@@ -50,3 +50,4 @@ for(let i of arr6){
     console.log(i)
 }
 //11 22 33 44 55 => for..of는 값 출력
+

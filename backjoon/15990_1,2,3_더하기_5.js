@@ -3,7 +3,7 @@ const input=fs.readFileSync("example.txt").toString().trim().split('\n').map(v=>
 const t=input.shift()
 
 const maxNum=Math.max(...input)
-const dp=[[0,0,0],[1,0,0],[0,1,0],[1,1,1]]
+const dp=[[0,0,0],[1,0,0],[0,1,0],[1,1,1]] //1,2,3순서
 for(let i=4;i<=maxNum;i++){
     dp[i]=[(dp[i-1][1]+dp[i-1][2])%1000000009,(dp[i-2][0]+dp[i-2][2])%1000000009,(dp[i-3][0]+dp[i-3][1])%1000000009]
 }

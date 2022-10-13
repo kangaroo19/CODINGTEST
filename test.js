@@ -1,8 +1,2 @@
-const fs=require('fs');
-const input=fs.readFileSync("example.txt").toString().trim().split('\n');
-const nums = input.map(v => v.split(' ').map(v=>+v));
-const n=nums.shift()
-console.log(nums)
-
-
-
+const arr=[1,2,3,4,5]
+console.log(arr.indexOf(1))

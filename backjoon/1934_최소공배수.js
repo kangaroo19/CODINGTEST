@@ -15,6 +15,7 @@ for(let i=1;i<N+1;i++){
     }
     array.push(((nums[i][0]/a)*(nums[i][1]/a))*a)
 }
+
 console.log(array.join("\n"))
 
 

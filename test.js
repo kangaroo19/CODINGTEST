@@ -1,2 +1,1 @@
-const arr=['bbbb','aaaa','cccc']
-console.log(arr.sort())
+console.log(9/-5)

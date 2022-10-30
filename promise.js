@@ -106,16 +106,6 @@ function getMeal(){
         },1000)
     })
 }
-function setHidden(){
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve(123)
-        },1000)
-    })
-}
-
-setHidden()
-    .then((data)=>console.log(data))
 
 // getChicken()
 //     .then((data)=>data())
@@ -161,3 +151,49 @@ function timer(time){
 // setTimeout(()=>{
 //     console.log(1)
 // })
+function job1(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('job1 ok!')
+        },2000) //2초가 지나면 resolve호출,resolve가 호출되면 프로미스가 대기 -> 이행상태 그리고 then으로 감
+    })
+}
+function job2(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('job2 ok!')
+        },2000)
+    })
+}
+// job1().then((data)=>{
+//     console.log(data)
+//     job2().then((data)=>{
+//         console.log(data)
+//     })
+// })
+
+// job1() 
+//     .then((data)=>{
+//         console.log(data)
+//         return job2()
+//     })
+//     .then((data)=>{
+//         console.log('니엄')
+//     })
+
+    new Promise(function(resolve, reject){
+        setTimeout(function() {
+          resolve(1);
+        }, 2000);
+      })
+      .then(function(result) {
+        console.log(result); // 1
+        return result + 10;
+      })
+      .then(function(result) {
+        console.log(result); // 11
+        return result + 20;
+      })
+      .then(function(result) {
+        console.log(result); // 31
+      });

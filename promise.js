@@ -3,7 +3,7 @@
 //비동기 작업이 완료된 이후에 다음 작업을 연결시켜 진행 할 수 있는 기능을 가지고 있음
 //작업 결과에 따라 성공 또는 실패를 리턴하며 결과값을 전달 받을 수 있음
 
-//pending(대기):처리가 완료되지 않은 상태
+//pending(대기):처리가 완료되지 않은 상태,promise가 생성되는 직후부터 resolve나 reject가 호출되기 전까지의 순간
 //fulfilled(이행):성공적으로 처리 완료된 상태
 //rejected(거부):처리가 실패로 끝난 상태
 function goToSchool() {
@@ -178,22 +178,41 @@ function job2(){
 //         return job2()
 //     })
 //     .then((data)=>{
-//         console.log('니엄')
+//         console.log('')
 //     })
 
-    new Promise(function(resolve, reject){
-        setTimeout(function() {
-          resolve(1);
-        }, 2000);
-      })
-      .then(function(result) {
-        console.log(result); // 1
-        return result + 10;
-      })
-      .then(function(result) {
-        console.log(result); // 11
-        return result + 20;
-      })
-      .then(function(result) {
-        console.log(result); // 31
-      });
+    // new Promise(function(resolve, reject){
+    //     setTimeout(function() {
+    //       resolve(1);
+    //     }, 2000);
+    //   })
+    //   .then(function(result) {
+    //     console.log(result); // 1
+    //     return result + 10;
+    //   })
+    //   .then(function(result) {
+    //     console.log(result); // 11
+    //     return result + 20;
+    //   })
+    //   .then(function(result) {
+    //     console.log(result); // 31
+    //   });
+
+let _promise=function (param){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            if(param) resolve('해결완료')
+            else reject('실패')
+        },1000)
+    })
+}
+
+console.log(1)
+_promise(false)
+    .then((data)=>{
+        console.log(2)
+        return
+    })
+    .catch((data)=>console.log(2))
+    .then(()=>console.log(3))
+

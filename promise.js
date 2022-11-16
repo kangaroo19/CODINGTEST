@@ -6,6 +6,11 @@
 //pending(대기):처리가 완료되지 않은 상태,promise가 생성되는 직후부터 resolve나 reject가 호출되기 전까지의 순간
 //fulfilled(이행):성공적으로 처리 완료된 상태
 //rejected(거부):처리가 실패로 끝난 상태
+
+//promise 안에는 작업이 성공했는지 실패했는지 알려주는 콜백함수가 들어가야 함
+
+
+
 function goToSchool() {
     console.log("학교에 갑니다.");
 }
@@ -21,6 +26,11 @@ function arriveAtSchool_asis() {
 function study() {
     console.log("열심히 공부를 합니다.");
 }
+
+// goToSchool()
+// arriveAtSchool_asis()
+// study()
+
 function arriveAtSchool_tobe(){
     return new Promise(function(resolve){
         setTimeout(function(){
@@ -207,12 +217,12 @@ let _promise=function (param){
     })
 }
 
-console.log(1)
-_promise(false)
-    .then((data)=>{
-        console.log(2)
-        return
-    })
-    .catch((data)=>console.log(2))
-    .then(()=>console.log(3))
+// console.log(1)
+// _promise(false)
+//     .then((data)=>{
+//         console.log(2)
+//         return
+//     })
+//     .catch((data)=>console.log(2))
+//     .then(()=>console.log(3))
 

@@ -7,10 +7,13 @@ let set2=new Set('123') //Set(3) { '1', '2', '3' }
 let set3=new Set([1,2,3])
 set3.add(3) //{1,2,3}
 set3.add(4) //{1,2,3,4}
+set3.add(4)
+set3.add(4)
+set3.add(4)
 set3.delete(4) //return true
 set3.delete(4) //return false
 //-----------------------------------------------------
-
+console.log(set3)
 //포함 여부 확인
 let set4=new Set([1,2,3])
 set4.has(1) //true

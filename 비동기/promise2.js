@@ -24,18 +24,18 @@ function job2(){
 // })
 // nested 방식
 
-// job1()
-//     .then(function(data){ //then 안에는 콜백함수 들어감
-//         console.log(data)
-//         return job2()
-//     })
-//     .catch(function(reason){
-//         console.log(reason)
-//         return Promise.reject()
-//     })
-//     .then(function (data){
-//         console.log(data)
-//     })
+job1()
+    .then(function(data){ //then 안에는 콜백함수 들어감
+        console.log(data)
+        return job2()
+    })
+    .catch(function(reason){
+        console.log(reason)
+        return Promise.reject()
+    })
+    .then(function (data){
+        console.log(data)
+    })
 //chaining 방식
 
 
@@ -55,8 +55,8 @@ function timer(time){
 //     console.timeEnd('promise all')
 // })
 
-console.time('promise race') //race는 빨리끝나는것
-Promise.race([timer(1000),timer(2000),timer(3000)]).then((result)=>{
-    console.log(result)
-    console.timeEnd('promise race')
-})
+// console.time('promise race') //race는 빨리끝나는것
+// Promise.race([timer(1000),timer(2000),timer(3000)]).then((result)=>{
+//     console.log(result)
+//     console.timeEnd('promise race')
+// })

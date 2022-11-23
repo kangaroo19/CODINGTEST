@@ -103,10 +103,16 @@ class LinkedList{
         this.size--
     }
 }
+const arr=[[1,3],[1,4],[3,5],[5,4]]
 
 const linkedlist=new LinkedList()
-linkedlist.insertLast('a')
-linkedlist.insertLast('b')
-linkedlist.insertLast('c')
-linkedlist.insertAt('x',0)
-console.log(linkedlist)
+
+linkedlist.insertFirst(1)
+linkedlist.insertFirst(3)
+linkedlist.insertAt(1,4)
+linkedlist.insertAt(2,3)
+
+
+
+
+console.log(linkedlist.head)

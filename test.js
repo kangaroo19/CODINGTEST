@@ -1,7 +1,3 @@
-const arr=['abcd','bbb','cccc','aa']
-arr.sort((a,b)=>{
-    if(a[1]<b[1]) return -1
-    else return 0
-})
+let a='1200'
 
-console.log(arr)
+console.log(parseInt(a,3))

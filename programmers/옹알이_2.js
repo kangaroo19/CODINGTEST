@@ -9,6 +9,7 @@ function solution(str) {
             str[i]=answer.join(j) //arr의 해당 인덱스로 변환
         }
     }
+    
     for(let i=0;i<str.length;i++){
         if (testArr.some(v=>str[i].includes(v))) continue; //str[i]에 testArr의 요소 하나라도 있으면 불가하므로 continue
         else if(!isNaN(str[i])) count++ //숫자라면 count증가

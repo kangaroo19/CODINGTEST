@@ -8,22 +8,21 @@ function solution1(n) {
         const result = start.match(AntExp);
         console.log(result)
         for (item of result) {
-            str += String(item.length) + item[0]; 
+            str += item[0]+String(item.length); 
         }
         start = str;
-        console.log(start.split('').reverse().join('')) 
+        console.log(str)
     }
-    return start.split('').reverse().join('')
+    return start
 }
 
 //console.log(solution1(5))
 
-const testExp=/(.)\1*/g
-const start='11223232'
+const testExp=/(\d)\1*/g
+const start='112232322222'
 const result=start.match(testExp)
 
-// console.log(result)
-
+//console.log(result)
 
 
 function solution2(n){
@@ -45,5 +44,5 @@ function solution2(n){
     }
     return array2.sort((a,b)=>a-b)
 }
-solution2(1000)
+//solution2(1000)
 

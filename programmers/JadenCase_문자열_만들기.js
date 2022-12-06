@@ -6,6 +6,7 @@ function solution(s) {
             else array[i][j]=array[i][j].toLowerCase()
         }
     }
+    console.log(array.join(" "))
     return array.join(" ").replace(/,/g,"")
 }
 const str='3people unFollowed me'

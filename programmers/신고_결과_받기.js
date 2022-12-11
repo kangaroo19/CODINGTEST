@@ -32,7 +32,8 @@ function solution(id_list, report, n) {
 const id_list=["muzi", "frodo", "apeach", "neo"]
 const report=["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
 const k=2
-
+const a=[...new Set(report)]
+console.log(a)
 function solution2(id_list, report, k) {
     let reports = [...new Set(report)].map(a=>{return a.split(' ')});
     console.log(reports)
@@ -53,5 +54,5 @@ function solution2(id_list, report, k) {
     return answer;
 }
 
-solution2(id_list,report,k)
-console.log(null||0)
+//solution2(id_list,report,k)
+//console.log(NaN||1)

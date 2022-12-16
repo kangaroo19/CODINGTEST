@@ -1,19 +1,29 @@
-let str="z-+.^."
-str=str.toLowerCase()
-let reg1=/[\{\}\[\]\/?,;:|\)*~`!^\+<>@\#$%&\\\=\(\'\"]/gi
-str=str.replace(reg1,"")
+const board=[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]
+const moves=[1,5,3,5,1,2,1,4]	
+const n=5
+const stack=[] //집은거
+let count=0
+const newBoard=[...Array(5)].map(()=>[])
+for(let i=0;i<n;i++){
+    for(let j=0;j<n;j++){
+        if(board[j][i]===0) continue
+        newBoard[i].push(board[j][i])
+    }
+}
+newBoard.map((v,i)=>v.reverse())
+console.log(newBoard)
 
-let reg2=/\.{2,}/gi
-str=str.replace(reg2,".")
+for(let i=0;i<moves.length;i++){
+    console.log(stack)
+    if(!newBoard[moves[i]-1].length) continue
+    let pop=newBoard[moves[i]-1].pop()
+    stack.push(pop)
+    if(stack.length>=2 && stack[stack.length-1]===stack[stack.length-2]){
+        stack.pop()
+        stack.pop()
+        count++
+    }
+}
 
-let reg3=/^\./gi
-str=str.replace(reg3,"")
 
-let reg4=/\.$/gi
-str=str.replace(reg4,"")
-
-
-str=(!str.length)?'a':str
-str=(str.length>=16)?str.substring(0,16):str
-str=(str.length<=2)?str.padEnd(3,str[str.length-1]):str
-console.log(str)
+console.log(count*2)

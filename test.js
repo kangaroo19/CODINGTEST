@@ -1,29 +1,36 @@
-const board=[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]
-const moves=[1,5,3,5,1,2,1,4]	
-const n=5
-const stack=[] //집은거
-let count=0
-const newBoard=[...Array(5)].map(()=>[])
-for(let i=0;i<n;i++){
-    for(let j=0;j<n;j++){
-        if(board[j][i]===0) continue
-        newBoard[i].push(board[j][i])
+const numbers=[7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2]
+const hand='left'
+const keyPads=[[3,1],[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]
+const lstack=[[3,0]]
+const rstack=[[3,2]]
+let answer=""
+numbers.forEach((v,i)=>{
+    if(/[147]/.test(v)){ //무조건 왼손
+        answer+='L'
+        lstack.push(keyPads[v])
     }
-}
-newBoard.map((v,i)=>v.reverse())
-console.log(newBoard)
-
-for(let i=0;i<moves.length;i++){
-    console.log(stack)
-    if(!newBoard[moves[i]-1].length) continue
-    let pop=newBoard[moves[i]-1].pop()
-    stack.push(pop)
-    if(stack.length>=2 && stack[stack.length-1]===stack[stack.length-2]){
-        stack.pop()
-        stack.pop()
-        count++
+    else if(/[369]/.test(v)){ //무조건 오른손
+        answer+='R'
+        rstack.push(keyPads[v])
     }
-}
-
-
-console.log(count*2)
+    
+    else{
+        let len1=Math.abs(lstack[lstack.length-1][0]-keyPads[v][0])+Math.abs(lstack[lstack.length-1][1]-keyPads[v][1])
+        let len2=Math.abs(rstack[rstack.length-1][0]-keyPads[v][0])+Math.abs(rstack[rstack.length-1][1]-keyPads[v][1])
+        console.log(len1,len2)
+        if(len1<len2){
+            answer+='L'
+            lstack.push(keyPads[v])
+        }
+        else if(len1>len2){
+            answer+='R'
+            rstack.push(keyPads[v])
+        }
+        else{
+            answer+=hand.substring(0,1).toUpperCase()
+            if(hand.substring(0,1)==='l') lstack.push(keyPads[v])
+            else rstack.push(keyPads[v])
+        }
+    } 
+})
+console.log(answer)

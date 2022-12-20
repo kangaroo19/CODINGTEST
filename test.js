@@ -1,38 +1,20 @@
-let dart='1S*2T*3S'
-const stack=[]
-//.map(v=>arr.push(v.replace(/S/g,'1').replace(/D/g,'2').replace(/T/g,'3')))
-
-//const arr=[]
-const arr=dart.match(/(\d+\D[\#\*]?)/gi)
-//console.log(test.match(/d/gi))
-
-//const arr=dart.match(/(\d+\D[\#\*]?)/gi)
-//console.log(dart.match(/(\d+\d[\#\*]?)/gi))
-console.log(arr)
-const regex=new RegExp(/[0-9]/)
-
-arr.forEach((v,_)=>{
-    let score=v.match(/(\d{1,})/gi).join('')
-    v=v.replace(/(\d{1,})/gi,"").replace(/S/g,'1').replace(/D/g,'2').replace(/T/g,'3')
-    if(v.includes('#')){
-        stack.push(Math.pow(score,v[0])*-1)
+const n=15
+const arr=[]
+for(let i=1;i<=n;i++) arr[i-1]=i
+let start=0
+let end=0
+let count=0
+while(start<arr.length){
+    let sum=0
+    for(let i=start;i<=end;i++){
+        sum+=arr[i]
     }
-    else if(v.includes('*')){
-        stack.push(Math.pow(score,v[0]))
-        stack[stack.length-1]*=2
-        stack[stack.length-2]*=2
-        //첫번째 트라이 에서 * 가 나왔을때(배열의 크기 1)
-        //stack.length-2 는 '-1': NaN 으로 들어가고 
-        //마지막 reduce에서 NaN은 계산 안함
-    }
+    if(sum<n) end++
+    else if(sum>n) start++
     else{
-        stack.push(Math.pow(score,v[0]))
+        start++
+        count++
     }
-})
+}
 
-console.log(stack)
-console.log(stack.reduce((acc,cur)=>{
-    console.log(acc,cur)
-    return acc+cur
-}))
-
+console.log(count)

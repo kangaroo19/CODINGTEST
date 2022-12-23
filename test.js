@@ -1,20 +1,32 @@
-const n=15
-const arr=[]
-for(let i=1;i<=n;i++) arr[i-1]=i
-let start=0
-let end=0
-let count=0
-while(start<arr.length){
-    let sum=0
-    for(let i=start;i<=end;i++){
-        sum+=arr[i]
+const n=2
+// const words=["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]
+//const words=["hello", "one", "even", "never", "now", "world", "draw"]
+//const words=["hello", "observe", "effect", "take", "either", "recognize", "encourage", "ensure", "establish", "hang", "gather", "refer", "reference", "estimate", "executive"]
+const words=['aa','aba','aba','aa']
+const stack=[words[0]]
+for(let i=1;i<words.length;i++){
+    if(stack[i-1][stack[i-1].length-1]===words[i][0]){
+        stack.push(words[i])
     }
-    if(sum<n) end++
-    else if(sum>n) start++
+    else if(words[i].length===1){
+        stack.push(false)
+        break
+    }
     else{
-        start++
-        count++
+        stack.push(false)
+        break
+    }
+    for(let j=0;j<stack.length-1;j++){
+        if(words[i]===stack[j]){
+            stack.pop()
+            stack.push(false)
+            break
+        }
     }
 }
-
-console.log(count)
+for(let i=0;i<stack.length;i++){
+    if(stack[i]===false){
+        console.log([i%n+1,Math.floor(i/n+1)])
+        break;
+    }
+}

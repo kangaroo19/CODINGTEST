@@ -42,4 +42,4 @@ function solution2(k,tangerine){
 solution2(k,tangerine)
 
 
-//나의 풀이와 비슷한 방식이지만 객체 사용
+//나의 풀이와 비슷한 방식이지만 객체 사용d

@@ -58,10 +58,5 @@ async function f(){
     console.log('end')
 }
 
-// f()
+//f()
 
-let n=64
-
-const dp=[[[1,2],[2,2]]]
-console.log(dp[0][0])
-dp.push([])

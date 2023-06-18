@@ -35,15 +35,15 @@ function arriveAtSchool_tobe(){
     return new Promise(function(resolve){
         setTimeout(function(){
             console.log('학교에 도착했습니다.')
-            resolve()
+            resolve() //호출하지 않으면 뒤에 .then사용불가
         },1000)
     })
 }
 
-// goToSchool()
-// arriveAtSchool_tobe().then(function(){
-//     study()
-// })
+goToSchool()
+arriveAtSchool_tobe().then(function(){
+    study()
+})
 
 
 

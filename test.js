@@ -1,29 +1,16 @@
-const sequence = [1, 2, 3, 4, 5];
-const k = 7;
-
-function solution(sequence, k) {
-  let start = 0;
-  let end = 0;
-  let sum = sequence[0];
-  const answer = [0, 999999];
-  const arr = [];
-  while (start !== sequence.length - 1 && end !== sequence.length - 1) {
-    if (sum < k) {
-      ++end;
-      sum += sequence[end];
-    } else if (sum > k) {
-      sum -= sequence[start];
-      ++start;
-    } else {
-      if (answer[1] - answer[0] > end - start) {
-        answer[0] = start;
-        answer[1] = end;
-      }
-      sum -= sequence[start];
-      ++start;
+function solution(phone_book) {
+  phone_book.sort(); // 전화번호 리스트를 정렬합니다.
+  console.log(phone_book);
+  for (let i = 0; i < phone_book.length - 1; i++) {
+    // 현재 번호와 다음 번호의 시작 부분이 같으면 접두어이므로 false를 반환합니다.
+    if (
+      phone_book[i] === phone_book[i + 1].substring(0, phone_book[i].length)
+    ) {
+      return false;
     }
   }
-  return answer;
+
+  return true; // 접두어가 없는 경우 true를 반환합니다.
 }
 
-solution(sequence, k);
+console.log(solution(["119", "97674223", "1195524421"]));
